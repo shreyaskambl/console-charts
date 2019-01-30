@@ -37,8 +37,8 @@ spec:
             cpu: {{ default .Values.defaultCPURequest .Values.esGrafanaCPURequest }}
             memory: {{ default .Values.defaultMemoryRequest .Values.esGrafanaMemoryRequest }}
           limits:
-            cpu: {{ default .Values.defaultCPURequest .Values.esGrafanaCPULimit }}
-            memory: {{ default .Values.defaultMemoryRequest .Values.esGrafanaMemoryLimit }}
+            cpu: {{ default .Values.defaultCPULimit .Values.esGrafanaCPULimit }}
+            memory: {{ default .Values.defaultMemoryLimit .Values.esGrafanaMemoryLimit }}
         env:
           # The next two env variables set up anonymous access to grafana with editor access.
           - name: GF_AUTH_ANONYMOUS_ENABLED
