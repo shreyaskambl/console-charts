@@ -78,6 +78,9 @@ spec:
             requests:
               cpu: {{ default .Values.defaultCPURequest .Values.esMonitorCPURequest }}
               memory: {{ default .Values.defaultMemoryRequest .Values.esMonitorMemoryRequest }}
+            limits:
+              cpu: {{ default .Values.defaultCPURequest .Values.esMonitorCPULimit }}
+              memory: {{ default .Values.defaultMemoryRequest .Values.esMonitorMemoryLimit }}
           args:
             - --configPath=/etc/config/
             - --storagePath=/monitor-data/
@@ -116,6 +119,9 @@ spec:
             requests:
               cpu: {{ default .Values.defaultCPURequest .Values.configmapReloadCPURequest }}
               memory: {{ default .Values.defaultMemoryRequest .Values.configmapReloadMemoryRequest }}
+            limits:
+              cpu: {{ default .Values.defaultCPURequest .Values.configmapReloadCPULimit }}
+              memory: {{ default .Values.defaultMemoryRequest .Values.configmapReloadMemoryLimit }}
           args:
           - --volume-dir=/etc/es-monitor-api
           - --webhook-url=http://127.0.0.1:8180/reload
@@ -130,6 +136,9 @@ spec:
             requests:
               cpu: {{ default .Values.defaultCPURequest .Values.prometheusCPURequest }}
               memory: {{ default .Values.defaultMemoryRequest .Values.prometheusMemoryRequest }}
+            limits:
+              cpu: {{ default .Values.defaultCPURequest .Values.prometheusCPULimit }}
+              memory: {{ default .Values.defaultMemoryRequest .Values.prometheusMemoryLimit }}
 
           args:
             - --config.file=/etc/config/prometheus.yml
