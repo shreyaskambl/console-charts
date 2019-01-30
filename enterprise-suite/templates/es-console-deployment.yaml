@@ -19,6 +19,13 @@ spec:
       containers:
       - name: dnsmasq
         image: {{ .Values.goDnsmasqImage }}:{{ .Values.goDnsmasqVersion }}
+        resources:
+          requests:
+            cpu: {{ default .Values.defaultCPURequest .Values.esConsoleDnsmasqCPURequest }}
+            memory: {{ default .Values.defaultMemoryRequest .Values.esConsoleDnsmasqMemoryRequest }}
+          limits:
+            cpu: {{ default .Values.defaultCPURequest .Values.esConsoleDnsmasqCPULimit }}
+            memory: {{ default .Values.defaultMemoryRequest .Values.esConsoleDnsmasqMemoryLimit }}
         args:
           - --listen
           - "127.0.0.1:5353"
