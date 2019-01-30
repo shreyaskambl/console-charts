@@ -33,8 +33,8 @@ spec:
               cpu: {{ default .Values.defaultCPURequest .Values.kubeStateMetricsCPURequest }}
               memory: {{ default .Values.defaultMemoryRequest .Values.kubeStateMetricsMemoryRequest }}
             limits:
-              cpu: {{ default .Values.defaultCPURequest .Values.kubeStateMetricsCPULimit }}
-              memory: {{ default .Values.defaultMemoryRequest .Values.kubeStateMetricsMemoryLimit }}
+              cpu: {{ default .Values.defaultCPULimit .Values.kubeStateMetricsCPULimit }}
+              memory: {{ default .Values.defaultMemoryLimit .Values.kubeStateMetricsMemoryLimit }}
           ports:
             - name: metrics
               containerPort: 8080
