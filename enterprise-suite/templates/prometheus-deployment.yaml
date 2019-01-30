@@ -41,6 +41,9 @@ spec:
             requests:
               cpu: {{ default .Values.defaultCPURequest }}
               memory: {{ default .Values.defaultMemoryRequest }}
+            limits:
+              cpu: {{ default .Values.defaultCPURequest }}
+              memory: {{ default .Values.defaultMemoryRequest }}
           command:
             - /bin/sh
             - -c
@@ -58,6 +61,13 @@ spec:
         # For Openshift the below will fail, but we can safely ignore it as Openshift remaps the user itself.
         - name: change-prometheus-data-volume-ownership
           image: {{ .Values.busyboxImage }}:{{ .Values.busyboxVersion }}
+          resources:
+            requests:
+              cpu: {{ default .Values.defaultCPURequest }}
+              memory: {{ default .Values.defaultMemoryRequest }}
+            limits:
+              cpu: {{ default .Values.defaultCPURequest }}
+              memory: {{ default .Values.defaultMemoryRequest }}
           command:
             - sh
             - -c
