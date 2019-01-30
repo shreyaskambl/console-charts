@@ -24,8 +24,8 @@ spec:
             cpu: {{ default .Values.defaultCPURequest .Values.esConsoleDnsmasqCPURequest }}
             memory: {{ default .Values.defaultMemoryRequest .Values.esConsoleDnsmasqMemoryRequest }}
           limits:
-            cpu: {{ default .Values.defaultCPURequest .Values.esConsoleDnsmasqCPULimit }}
-            memory: {{ default .Values.defaultMemoryRequest .Values.esConsoleDnsmasqMemoryLimit }}
+            cpu: {{ default .Values.defaultCPULimit .Values.esConsoleDnsmasqCPULimit }}
+            memory: {{ default .Values.defaultMemoryLimit .Values.esConsoleDnsmasqMemoryLimit }}
         args:
           - --listen
           - "127.0.0.1:5353"
@@ -39,8 +39,8 @@ spec:
             cpu: {{ default .Values.defaultCPURequest .Values.esConsoleCPURequest }}
             memory: {{ default .Values.defaultMemoryRequest .Values.esConsoleMemoryRequest }}
           limits:
-            cpu: {{ default .Values.defaultCPURequest .Values.esConsoleCPULimit }}
-            memory: {{ default .Values.defaultMemoryRequest .Values.esConsoleMemoryLimit }}
+            cpu: {{ default .Values.defaultCPULimit .Values.esConsoleCPULimit }}
+            memory: {{ default .Values.defaultMemoryLimit .Values.esConsoleMemoryLimit }}
         ports:
         - containerPort: 8080
         volumeMounts:
