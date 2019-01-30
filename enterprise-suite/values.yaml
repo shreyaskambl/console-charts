@@ -112,7 +112,7 @@ defaultCPULimit: 100m
 # default container resource requests for memory
 defaultMemoryLimit: 500Mi
 # Prometheus resource request for memory
-prometheusCPULimit: 500m
+prometheusCPULimit: 600m
 prometheusMemoryLimit: 2Gi
 
 #################################################
