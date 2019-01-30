@@ -42,8 +42,8 @@ spec:
               cpu: {{ default .Values.defaultCPURequest }}
               memory: {{ default .Values.defaultMemoryRequest }}
             limits:
-              cpu: {{ default .Values.defaultCPURequest }}
-              memory: {{ default .Values.defaultMemoryRequest }}
+              cpu: {{ default .Values.defaultCPULimit }}
+              memory: {{ default .Values.defaultMemoryLimit }}
           command:
             - /bin/sh
             - -c
@@ -66,8 +66,8 @@ spec:
               cpu: {{ default .Values.defaultCPURequest }}
               memory: {{ default .Values.defaultMemoryRequest }}
             limits:
-              cpu: {{ default .Values.defaultCPURequest }}
-              memory: {{ default .Values.defaultMemoryRequest }}
+              cpu: {{ default .Values.defaultCPULimit }}
+              memory: {{ default .Values.defaultMemoryLimit }}
           command:
             - sh
             - -c
@@ -89,8 +89,8 @@ spec:
               cpu: {{ default .Values.defaultCPURequest .Values.esMonitorCPURequest }}
               memory: {{ default .Values.defaultMemoryRequest .Values.esMonitorMemoryRequest }}
             limits:
-              cpu: {{ default .Values.defaultCPURequest .Values.esMonitorCPULimit }}
-              memory: {{ default .Values.defaultMemoryRequest .Values.esMonitorMemoryLimit }}
+              cpu: {{ default .Values.defaultCPULimit .Values.esMonitorCPULimit }}
+              memory: {{ default .Values.defaultMemoryLimit .Values.esMonitorMemoryLimit }}
           args:
             - --configPath=/etc/config/
             - --storagePath=/monitor-data/
@@ -130,8 +130,8 @@ spec:
               cpu: {{ default .Values.defaultCPURequest .Values.configmapReloadCPURequest }}
               memory: {{ default .Values.defaultMemoryRequest .Values.configmapReloadMemoryRequest }}
             limits:
-              cpu: {{ default .Values.defaultCPURequest .Values.configmapReloadCPULimit }}
-              memory: {{ default .Values.defaultMemoryRequest .Values.configmapReloadMemoryLimit }}
+              cpu: {{ default .Values.defaultCPULimit .Values.configmapReloadCPULimit }}
+              memory: {{ default .Values.defaultMemoryLimit .Values.configmapReloadMemoryLimit }}
           args:
           - --volume-dir=/etc/es-monitor-api
           - --webhook-url=http://127.0.0.1:8180/reload
@@ -147,8 +147,8 @@ spec:
               cpu: {{ default .Values.defaultCPURequest .Values.prometheusCPURequest }}
               memory: {{ default .Values.defaultMemoryRequest .Values.prometheusMemoryRequest }}
             limits:
-              cpu: {{ default .Values.defaultCPURequest .Values.prometheusCPULimit }}
-              memory: {{ default .Values.defaultMemoryRequest .Values.prometheusMemoryLimit }}
+              cpu: {{ default .Values.defaultCPULimit .Values.prometheusCPULimit }}
+              memory: {{ default .Values.defaultMemoryLimit .Values.prometheusMemoryLimit }}
 
           args:
             - --config.file=/etc/config/prometheus.yml
