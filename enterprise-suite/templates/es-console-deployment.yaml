@@ -31,6 +31,9 @@ spec:
           requests:
             cpu: {{ default .Values.defaultCPURequest .Values.esConsoleCPURequest }}
             memory: {{ default .Values.defaultMemoryRequest .Values.esConsoleMemoryRequest }}
+          limits:
+            cpu: {{ default .Values.defaultCPURequest .Values.esConsoleCPULimit }}
+            memory: {{ default .Values.defaultMemoryRequest .Values.esConsoleMemoryLimit }}
         ports:
         - containerPort: 8080
         volumeMounts:
