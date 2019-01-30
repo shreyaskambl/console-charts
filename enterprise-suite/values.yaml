@@ -99,11 +99,21 @@ esConsoleExposePort: 30080
 # ResourceRequests
 #
 # default container resource requests for CPU (0.1)
-defaultCPURequest: 100m
+defaultCPURequest: 50m
 # default container resource requests for memory
 defaultMemoryRequest: 50Mi
 # Prometheus resource request for memory
 prometheusMemoryRequest: 250Mi
+
+# ResourceLimits
+#
+# default container resource requests for CPU (0.1)
+defaultCPULimit: 100m
+# default container resource requests for memory
+defaultMemoryLimit: 500Mi
+# Prometheus resource request for memory
+prometheusCPULimit: 500m
+prometheusMemoryLimit: 2Gi
 
 #################################################
 # Persistent Volumes
