@@ -113,7 +113,10 @@ defaultCPULimit: 100m
 defaultMemoryLimit: 500Mi
 # Prometheus resource request for memory
 prometheusCPULimit: 600m
-prometheusMemoryLimit: 2Gi
+prometheusMemoryLimit: 4Gi
+#es-console resource limit for memory and cpu
+esConsoleMemoryLimit: 200m
+esConsoleMemoryRequest: 2Gi
 
 #################################################
 # Persistent Volumes
