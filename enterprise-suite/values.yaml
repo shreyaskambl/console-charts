@@ -112,7 +112,7 @@ defaultCPULimit: 100m
 # default container resource requests for memory
 defaultMemoryLimit: 500Mi
 # Prometheus resource request for memory
-prometheusCPULimit: 600m
+prometheusCPULimit: 900m
 prometheusMemoryLimit: 5Gi
 #es-console resource limit for memory and cpu
 esConsoleCPULimit: 200m
