@@ -8,7 +8,7 @@ esMonitorVersion: v1.0.5
 # lightbend-docker-commercial-registry.bintray.io/enterprise-suite/es-grafana
 esGrafanaVersion: v0.1.5
 # prom/prometheus
-prometheusVersion: v2.4.3
+prometheusVersion: v2.12.0
 # prom/alertmanager
 alertManagerVersion: v0.15.1
 # jimmidyson/configmap-reload
