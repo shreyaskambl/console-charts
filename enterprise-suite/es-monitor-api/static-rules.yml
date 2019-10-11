@@ -64,3 +64,9 @@
 
 - record: akka_http_http_server_responses_5xx_rate
   expr: rate(akka_http_http_server_responses_5xx[5m])
+  
+- record: goldfish_engine_total_requests
+  expr: http_requests_received_total{action="Calculate"}
+  
+- record: goldfish_engine_ok_requests
+  expr: http_requests_received_total{action="Calculate",code="200"}
