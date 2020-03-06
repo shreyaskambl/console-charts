@@ -70,3 +70,18 @@
   
 - record: goldfish_engine_ok_requests
   expr: http_requests_received_total{action="Calculate",code="200"}
+
+- record: job:hcr_total_requests_get:sum
+  expr: sum(max_over_time(akka_http_request_path_endpoint_responses{request_method="GET",request_path=~"(/internal/api/corporateplan/common/v1/hydrocarbonresources/:projectid|/internal/api/corporateplan/common/v1/hydrocarbonresources/changereasons/:projectid|(/api/corporateplan/common/v1/projects\\?reportingperiodid$)|/internal/api/corporateplan/setup/v2/definitions/all).*"}[30d])-min_over_time(akka_http_request_path_endpoint_responses{request_method="GET",request_path=~"(/internal/api/corporateplan/common/v1/hydrocarbonresources/:projectid|/internal/api/corporateplan/common/v1/hydrocarbonresources/changereasons/:projectid|(/api/corporateplan/common/v1/projects\\?reportingperiodid$)|/internal/api/corporateplan/setup/v2/definitions/all).*"}[30d]))
+
+- record: job:hcr_5xx_requests_get:sum
+  expr: sum(max_over_time(akka_http_request_path_endpoint_responses_5xx{request_method="GET",request_path=~"(/internal/api/corporateplan/common/v1/hydrocarbonresources/:projectid|/internal/api/corporateplan/common/v1/hydrocarbonresources/changereasons/:projectid|(/api/corporateplan/common/v1/projects\\?reportingperiodid$)|/internal/api/corporateplan/setup/v2/definitions/all).*"}[30d])-min_over_time(akka_http_request_path_endpoint_responses_5xx{request_method="GET",request_path=~"(/internal/api/corporateplan/common/v1/hydrocarbonresources/:projectid|/internal/api/corporateplan/common/v1/hydrocarbonresources/changereasons/:projectid|(/api/corporateplan/common/v1/projects\\?reportingperiodid$)|/internal/api/corporateplan/setup/v2/definitions/all).*"}[30d]))
+
+- record: job:hcr_total_requests_post:sum
+  expr: sum(max_over_time(akka_http_request_path_endpoint_responses{request_method="POST",request_path=~"/internal/api/corporateplan/common/v1/xlsprocessor/parse/volume|/internal/api/corporateplan/common/v1/xlsprocessor/parse/changereason"}[30d])-min_over_time(akka_http_request_path_endpoint_responses{request_method="POST",request_path=~"/internal/api/corporateplan/common/v1/xlsprocessor/parse/volume|/internal/api/corporateplan/common/v1/xlsprocessor/parse/changereason"}[30d]))
+
+- record: job:hcr_5xx_requests_post:sum
+  expr: sum(max_over_time(akka_http_request_path_endpoint_responses_5xx{request_method="POST",request_path=~"/internal/api/corporateplan/common/v1/xlsprocessor/parse/volume|/internal/api/corporateplan/common/v1/xlsprocessor/parse/changereason"}[30d])-min_over_time(akka_http_request_path_endpoint_responses_5xx{request_method="POST",request_path=~"/internal/api/corporateplan/common/v1/xlsprocessor/parse/volume|/internal/api/corporateplan/common/v1/xlsprocessor/parse/changereason"}[30d]))
+
+- record: job:hcr_success_sli:ratio
+  expr: 1 - ((job:hcr_5xx_requests_get:sum+job:hcr_5xx_requests_post:sum)/(job:hcr_total_requests_get:sum+job:hcr_5xx_requests_post:sum))
